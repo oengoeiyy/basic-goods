@@ -1,0 +1,78 @@
+<app-carousel-pause [imageArray]="imageArray" [showPanel]="false" />
+
+<div>
+  <div class="row" style="margin-right: 0;">
+    <div class="col-3">
+      <div class="container w-60" style="margin-top: 3rem;margin-left: 1rem;margin-right: 1rem">
+        Search & Sort
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" aria-label="search">
+          <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
+            <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
+            <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5ZM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+          </svg></span>
+        </div>
+
+        <div ngbDropdown class="d-inline-block w-100">
+          <button type="button" class="btn btn-outline-secondary mb-3" style="width:100%" id="dropdownBasic1" ngbDropdownToggle>
+            Search by
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="width:100%">
+            <button ngbDropdownItem>Title</button>
+            <button ngbDropdownItem>Artist</button>
+          </div>
+        </div>
+
+        <div ngbDropdown class="d-inline-block w-100">
+          <button type="button" class="btn btn-outline-secondary mb-4" style="width:100%" id="dropdownBasic1" ngbDropdownToggle>
+            Sort by
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="width:100%">
+            <button ngbDropdownItem>Name</button>
+            <button ngbDropdownItem>Release Date</button>
+            <button ngbDropdownItem>Price</button>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="btn" style="width:100%;background-color:rgb(143, 178, 241);color:black">Search</button>
+        </div>
+    
+      </div>
+      
+
+    </div>
+    <div class="col-9">
+      <div class="container mt-4 w-70">
+        <h3>New Release</h3>
+        <div class="row">
+          <div *ngFor="let item of goods; let i=index"
+            class="col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center">
+            <div class="card mb-4 w-70">
+              <a [href]="'info?goods='+item._id" rel="nofollow noopener noreferrer"> <img
+                  [src]="item.image[0]" class="card-img-top" alt="..."> </a>
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                <span class="card-title font-fam">{{item.title}}</span>
+                <span class="font-fam" style="font-size: 18px;margin-left:1.5rem;margin-top:0.15rem;">{{item.price}}฿</span>
+              </div>
+                <div class="card-text d-flex justify-content-between">
+                  <span class="align-self-center font-fam" style="font-size:13px;">by
+                    <span *ngFor="let artist of item.artist;index as i">
+                      <a [href]="artist.spotifyUrl" style="color:black;text-decoration:none;">
+                        <span *ngIf="i===item.artist.length-1; else artistname">{{ artist.name }}{{" "}}</span>
+                        <ng-template #artistname>{{ artist.name }}{{" | "}}</ng-template>
+                      </a>
+                    </span>
+                  </span>
+                  
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngIf="i % 3 == 2" class="w-70"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

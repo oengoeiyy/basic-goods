@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+        <ngb-carousel class="carousel-dark" *ngIf="goods" [interval]="0" [showNavigationIndicators]="false">
+            <ng-template ngbSlide *ngFor="let img of goods.image; index as i">
+                    <div class="picsum-img-wrapper d-flex justify-content-center">
+                        <img [src]="img" class="img-fit" style="width:80%;height:500px;object-fit:contain" alt="{{goods.title}}" />
+                    </div>
+            </ng-template>
+        </ngb-carousel>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-5" style="background-color: white;">
+        <h3 class="mt-5">{{goods.title}}</h3>
+        <h4>{{goods.price}}฿</h4>
+        <div class="mt-4" style="font-size: 15px;">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td scope="row">artist</td>
+              <td>
+                <span *ngFor="let artist of goods.artist;index as i">
+                  <span *ngIf="i===goods.artist.length-1; else artistname">
+                    <a [href]="artist.spotifyUrl" style="color:black;text-decoration:none;">{{ artist.name }}</a> {{" "}} 
+                  </span>
+                        <ng-template #artistname>
+                          <a [href]="artist.spotifyUrl" style="color:black;text-decoration:none;">{{ artist.name }}</a>{{" , "}}</ng-template>
+                  </span></td>
+            </tr>
+            <tr>
+              <td scope="row">instock</td>
+              <td>{{goods.instock}}</td>
+            </tr>
+            <tr>
+              <td scope="row">release date</td>
+              <td>{{goods.releaseDate}}</td>
+            </tr>
+          </tbody>
+        </table>  </div>
+
+        <div>
+          <div class="input-group mb-3 mt-5" style="width: 250px;">
+            <!-- <button class="btn" style="background-color:rgb(237, 237, 237);" type="button" id="button-addon1">-</button> -->
+            <span style="margin-right:1.2rem;" class="d-flex align-items-center">quantity : </span>
+            <input type="number" class="form-control" value="0" [min]="0" placeholder="">
+            <!-- <button class="btn" style="background-color:rgb(237, 237, 237);" type="button" id="button-addon2">+</button> -->
+          </div>
+          
+        </div>
+
+        <span style="margin-right: 1.5rem;"><button type="button" class="btn" style="background-color:rgb(236, 236, 236);color:black;">Add to cart</button></span>
+        <span><button type="button" class="btn" style="background-color:cornflowerblue;color:white;">Purchase</button></span>
+        
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href=""><h5 class="align-self-center d-inline" style="font-family: Verdana, Arial, Helvetica, sans-serif;">basicg<span style="color:cornflowerblue;vertical-align:text-bottom;">••</span>ds</h5></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li> -->
+           <!-- 
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Goods</a>
+          </li> -->
+
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <ng-template #cart>
+          {{user.user.username}}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+      </ng-template>
+        <div ngbDropdown *ngIf="user.access_token === null; else cart">       
+          <button class="btn nav-link" ngbDropdownToggle>Login</button>
+          <div ngbDropdownMenu style="width : 250px; left:-195px">
+            <div class="m-3">
+              <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input #username type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input #password type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="mt-1 btn btn-primary" (click)="login(username.value,password.value)">Submit</button>
+              </form>
+              <!-- <a href="#" class="dropdown-item">Action 1</a> -->
+            </div></div>
+        </div> 
+        <!-- <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
